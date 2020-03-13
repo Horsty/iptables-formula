@@ -210,6 +210,6 @@ firewall_disabled:
     - name: Firewall is disabled by default
     - text: firewall:enabled is False
 {%- endif %}
-
-{%-
-cmd.run: '/usr/sbin/iptables --wait -t filter -I INPUT 1 -p icmp --source 0.0.0.0/0 --jump ACCEPT'
+# Allow pings from anywhere
+'/usr/sbin/iptables --wait -t filter -I INPUT 1 -p icmp --source 0.0.0.0/0 --jump ACCEPT':
+  cmd.run
